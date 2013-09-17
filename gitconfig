@@ -1,0 +1,19 @@
+[user]
+	name = David Boissier
+	email = david.boissier@gmail.com
+[core]
+	editor = vim
+
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+[alias]
+	last = cat-file commit HEAD
+	st = status -s
+	co = checkout
+	br = branch -a
+	rb = rebase
+	pretty-log = log --oneline --date-order --graph --all --decorate
+	topo-log = log --oneline --graph --all --decorate
+	lg = log -p
