@@ -1,0 +1,17 @@
+# afficher l'etat du git
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != 'nothing to commit, working directory clean' ]] && echo '*'
+}
+
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ [\1$(parse_git_dirty)]/"
+}
+
+PS1='\[\033[01;31m\]¯\_(ツ)_/¯ \[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[00;32m\]$(parse_git_branch)\[\033[00m\]$ '
+
+# enable color support of ls and also add handy aliases
+export CLICOLOR=1
+export LSCOLORS=Gxfxcxdxcxegedabagacad
+
+alias ls='ls -GFh'
+alias ll='ls -la'
